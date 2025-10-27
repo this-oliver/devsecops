@@ -1,0 +1,19 @@
+name: Continous Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    # see https://github.com/googleapis/release-please-action/tree/16a9c90856f42705d54a6fda1823352bdc62cf38/?tab=readme-ov-file#workflow-permissions
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 # v4.4.0
+        with:
+          release-type: simple
